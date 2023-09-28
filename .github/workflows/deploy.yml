@@ -2,10 +2,8 @@ name: deploy
 
 on:
   push:
-    branches: [ master ]
-    push:
-      tags:
-      - 'v*'
+    branches:
+      - "main"
 
 jobs:
   # publish docker to github registry
@@ -21,8 +19,7 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
-    - uses: actions/checkout@v2
-    - run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u orangemug --password-stdin
-    - run: docker build -t docker.pkg.github.com/maputnik/editor/editor:master .
-    - run: docker push docker.pkg.github.com/maputnik/editor/editor:master
-
+      - uses: actions/checkout@v2
+      - run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u orangemug --password-stdin
+      - run: docker build -t docker.pkg.github.com/maputnik/editor/editor:master .
+      - run: docker push docker.pkg.github.com/maputnik/editor/editor:master

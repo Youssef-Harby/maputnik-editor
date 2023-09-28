@@ -1,4 +1,4 @@
-FROM node:10 as builder
+FROM node:16 as builder
 WORKDIR /maputnik
 
 # Only copy package.json to prevent npm install from running on every build
@@ -15,6 +15,8 @@ RUN npm run build
 # Create a clean python-based image with just the build results
 FROM python:3-slim
 WORKDIR /maputnik
+
+ENV mode=production
 
 COPY --from=builder /maputnik/build/build .
 

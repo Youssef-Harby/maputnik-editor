@@ -1,15 +1,17 @@
 <img width="200" alt="Maputnik logo" src="https://cdn.jsdelivr.net/gh/maputnik/design/logos/logo-color.png" />
 
 # Maputnik
+
+> **Note:** This fork of Maputnik includes support for both `arm64` and `amd64` architectures and utilizes an updated version of the runner image. Please refer to the [Docker section](#docker) below for usage instructions. For original repository and documentation, please refer to [Maputnik’s Official Repository](https://github.com/maputnik/editor).
+
 [![GitHub CI status](https://github.com/maputnik/editor/workflows/ci/badge.svg)][github-action-ci]
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)][license]
 
 [github-action-ci]: https://github.com/maputnik/editor/actions?query=workflow%3Aci
-[license]:          https://tldrlegal.com/license/mit-license
+[license]: https://tldrlegal.com/license/mit-license
 
 A free and open visual editor for the [MapLibre GL styles](https://maplibre.org/maplibre-style-spec/)
 targeted at developers and map designers.
-
 
 ## Usage
 
@@ -17,11 +19,16 @@ targeted at developers and map designers.
 - :link: Use the [Maputnik CLI](https://github.com/maputnik/editor/wiki/Maputnik-CLI) for local style development
 - In a Docker, run this command and browse to http://localhost:8888, Ctrl+C to stop the server.
 
+### Docker
+
+To run the updated Docker image for `arm64` and `amd64`, execute the following command:
+
 ```bash
-docker run -it --rm -p 8888:8888 maputnik/editor
+docker run -it --rm -p 8888:8888 ghcr.io/youssef-harby/maputnik-editor:latest
 ```
 
 ## Donations
+
 Mapbox has built one of the best and most amazing OSS ecosystems. A key component to ensure its longevity and independence is an OSS map designer.
 If you or your organisation has seen value from Maputnik, please consider donating at <https://maputnik.github.io/donate>
 
@@ -74,24 +81,25 @@ npm run lint
 npm run lint-styles
 ```
 
-
 ## Tests
+
 For testing we use [webdriverio](https://webdriver.io) and [selenium-standalone](https://github.com/webdriverio/selenium-standalone).
 
-[selenium-standalone](https://github.com/webdriverio/selenium-standalone) starts a server that will launch browsers on your local machine. You need to have Java installed on your machine as well as *chrome* or *firefox*.
+[selenium-standalone](https://github.com/webdriverio/selenium-standalone) starts a server that will launch browsers on your local machine. You need to have Java installed on your machine as well as _chrome_ or _firefox_.
 
-Now open a terminal and run the following using *chrome*:
+Now open a terminal and run the following using _chrome_:
 
 ```
 npm run test
 ```
-or *firefox*:
+
+or _firefox_:
+
 ```
 BROWSER=firefox npm run test
 ```
 
 After some time you should see a browser launch which will be automated by the test runner.
-
 
 ## Related Projects
 
